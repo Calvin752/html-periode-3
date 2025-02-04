@@ -1,0 +1,10 @@
+.flex-container {
+    display: flex;
+    background-color: lightgray;
+}
+
+.flex-item {
+    background-color: lightblue;
+    padding: 10px;
+    margin: 5px;
+}

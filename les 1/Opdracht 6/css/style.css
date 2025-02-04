@@ -1,0 +1,17 @@
+.outer-container {
+display: flex;
+background-color: lightgray; 
+}
+
+.inner-container {
+display: flex;
+flex-direction: column;
+background-color: lightyellow;
+margin-right: 20px; 
+}
+
+.flex-item {
+background-color: lightblue;
+padding: 10px;
+margin:5px; 
+}
