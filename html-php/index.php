@@ -1,3 +1,21 @@
+<?php
+require 'database.php';
+if (!isset($_GET['username'])) {
+die("Geen gebruikersnaam opgegeven.");
+}
+$username = $_GET['username'];
+
+$stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+$stmt->execute([$username]);
+$user = $stmt->fetch();
+if (!$user) {
+die("Gebruiker niet gevonden.");
+}
+
+$stmt = $pdo->prepare("SELECT * FROM recent_activity WHERE user_id = ?");
+$stmt->execute([$user['id']]);
+$recentActivity = $stmt->fetchAll();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,7 +41,7 @@
     <section class="profile-info">
         <img src="img/pf.jpg" alt="pf.jpg" class="avatar">
         <div class="info">
-            <h2>Gamer123</h2>
+            <h2><?= $user['username'] ?></h2>
             <p>Nederland</p>
             <p>No information given.</p>
             <p>Level 25</p>
